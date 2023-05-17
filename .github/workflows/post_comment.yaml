@@ -12,7 +12,4 @@ jobs:
     steps:
       - uses: mshick/add-pr-comment@v2
         with:
-          message: |
-            **Hello**
-            🌏
-            !
+          message: "This is PR number ${{ github.event.pull_request.number }}"
