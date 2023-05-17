@@ -20,10 +20,10 @@ jobs:
           script: |
             const prNumber = process.env.PR_NUMBER;
             const message = `Hello! This is a comment on PR #${prNumber}.`;
-            const octokit = context.github;
-            await octokit.issues.createComment({
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+            await octokit.rest.issues.createComment({
               issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
               body: message
             });
